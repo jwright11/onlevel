@@ -6,7 +6,7 @@ Author: John Wright
 Maintainer: John Wright <jwright11@gmail.com>
 Description: A generalized process for calculating on-level factors used to
     adjust historical premiums
-License: What license is it under?
+License: MIT
 LazyData: TRUE
 RoxygenNote: 6.1.1
 Depends: sp,rgeos
