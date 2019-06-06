@@ -1,0 +1,12 @@
+Package: onlevel
+Type: Package
+Title: Calculate on-level factors using the parallelogram method
+Version: 0.1.0
+Author: John Wright
+Maintainer: John Wright <jwright11@gmail.com>
+Description: A generalized process for calculating on-level factors used to
+    adjust historical premiums
+License: What license is it under?
+LazyData: TRUE
+RoxygenNote: 6.1.1
+Depends: sp,rgeos
