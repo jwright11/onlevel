@@ -10,3 +10,5 @@ License: MIT
 LazyData: TRUE
 RoxygenNote: 6.1.1
 Depends: sp,rgeos
+URL: http://github.com/jwright11/onlevel
+BugReports: http://github.com/jwright11/onlevel/issues
