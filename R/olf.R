@@ -9,10 +9,10 @@
 #' @return A list of five on-level factor components.
 #' @export
 olf <- function(in.rc, in.yr, in.prem.type, in.year.type, in.policy.length){
-  # https://google.github.io/styleguide/Rguide.xml
   # Error handling for in.prem.type
   if (missing(in.prem.type)){
     in.prem.type <- "E"
+    warning("assuming in.prem.type = 'E'")
   } else{
     if (length(in.prem.type) > 1){
       warning("in.prem.type should be of length 1, using first element only")
@@ -26,6 +26,7 @@ olf <- function(in.rc, in.yr, in.prem.type, in.year.type, in.policy.length){
   # Error handling for in.year.type
   if (missing(in.year.type)){
     in.year.type <- "C"
+    warning("assuming in.year.type = 'C'")
   } else{
     if (length(in.year.type) > 1){
       warning("in.year.type should be of length 1, using first element only")
@@ -39,6 +40,7 @@ olf <- function(in.rc, in.yr, in.prem.type, in.year.type, in.policy.length){
   # Error handling for in.policy.length
   if (missing(in.policy.length)){
     in.policy.length <- 12
+    warning("assuming in.policy.length = 12 months")
   } else{
     if (length(in.policy.length) > 1){
       warning("in.policy.length should be of length 1, using first element only")
@@ -153,7 +155,7 @@ olf <- function(in.rc, in.yr, in.prem.type, in.year.type, in.policy.length){
   out.shapes <- gIntersection(sp.yr[1], z, byid = T, drop_lower_td = T)
   if (length(sp.yr) > 1){
     for (i in 2:length(sp.yr)){
-      out.shapes <- rbind(out.shapes, gIntersection(sp.yr[i], z, byid = T))
+      out.shapes <- rbind(out.shapes, gIntersection(sp.yr[i], z, byid = T, drop_lower_td = T))
     }
   }
   for (j in 1:length(out.shapes)){
