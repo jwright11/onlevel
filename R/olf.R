@@ -124,8 +124,6 @@ olf <- function(in.rc, in.yr, in.prem.type, in.year.type, in.policy.length){
   sp.rc <- rbind(sp.rc, SpatialPolygons(list(Polygons(list(Polygon(cbind(c(dtmaxn, dtmaxn, dtmaxn, dtmaxn, dtmaxn), c(0, 12, 12, 0, 0)))), i + 1))))
   s <- gDifference(sp.rc[1], gUnaryUnion(sp.rc[2:length(sp.rc)]))
   z <- SpatialPolygonsDataFrame(s, data.frame(arl = df.rc[1, "rl"]), match.ID = F)
-  ##################
-  i<-5
   for (i in 2:(length(sp.rc) - 1)){
     m <- length(gDifference(sp.rc[i], sp.rc[1:(i - 1)], byid = T))
     if (m == 0){
@@ -140,7 +138,7 @@ olf <- function(in.rc, in.yr, in.prem.type, in.year.type, in.policy.length){
       z <- rbind(z, SpatialPolygonsDataFrame(u, data.frame(arl = prod(df.rc[c(1:(i - m - 1), i), "rl"])), match.ID = F))
       if (m > 1){
         for (j in 1:(m - 1)){
-          s <- gIntersection(sp.rc[i], gDifference(gUnaryUnion(sp.rc[setdiff((i - m + j - 1):length(sp.rc), i)]), gUnaryUnion(sp.rc[setdiff((i - m + j):length(sp.rc), i)], checkValidity = 0L)))
+          s <- gIntersection(sp.rc[i], gDifference(gUnaryUnion(sp.rc[setdiff((i - m + j - 1):length(sp.rc), i)]), gUnaryUnion(sp.rc[setdiff((i - m + j):length(sp.rc), i)])))
           t <- s@polygons[[1]]@Polygons
           u <- SpatialPolygons(list(Polygons(t, length(z) + 1)))
           z <- rbind(z, SpatialPolygonsDataFrame(u, data.frame(arl = prod(df.rc[c(1:(i - m + j - 1), i), "rl"])), match.ID = F))
